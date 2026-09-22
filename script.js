@@ -2,7 +2,7 @@
 // GitHubの設定
 // ========================================
 
-const GITHUB_USER = "あなたのGitHubユーザー名";
+const GITHUB_USER = "tamagohan360";
 const REPOSITORY = "clothing-impression-survey";
 const IMAGE_FOLDER = "images";
 
