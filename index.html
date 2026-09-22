@@ -2,40 +2,198 @@
 <html lang="ja">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>服の印象アンケート</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>
+        服の印象アンケート
+    </title>
+
+    <style>
+
+        body {
+
+            font-family: sans-serif;
+
+            max-width: 700px;
+
+            margin: auto;
+
+            padding: 20px;
+
+            background: #f5f5f5;
+
+        }
+
+
+        .container {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 10px;
+
+        }
+
+
+        .question {
+
+            margin-top: 40px;
+
+            padding: 20px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+        }
+
+
+        .question img {
+
+            display: block;
+
+            width: 100%;
+
+            max-width: 500px;
+
+            margin: 20px auto;
+
+        }
+
+
+        input {
+
+            box-sizing: border-box;
+
+            width: 100%;
+
+            padding: 10px;
+
+            margin-top: 5px;
+
+            margin-bottom: 15px;
+
+            font-size: 16px;
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
 <div class="container">
 
-    <h1>服の印象アンケート</h1>
+    <h1>
+        服の印象アンケート
+    </h1>
 
-    <p class="description">
-        これから表示される服の画像を見て、
-        あなたが感じた印象を3つ入力してください。
+
+    <p>
+        表示された服の画像から感じた印象を
+        3つ入力してください。
     </p>
 
-    <p class="description">
-        正解はありません。直感的に感じた印象を入力してください。
+
+    <p>
+        正解はありません。
+        あなたが直感的に感じた言葉を入力してください。
     </p>
 
-    <div id="questions"></div>
 
-    <button id="submitButton" onclick="submitAnswers()">
+    <div id="questions">
+
+        <p>
+            画像を読み込んでいます...
+        </p>
+
+    </div>
+
+
+    <button
+        id="submitButton"
+        onclick="submitAnswers()"
+    >
         回答を送信
     </button>
+
 
     <p id="message"></p>
 
 </div>
 
+
 <script src="script.js"></script>
 
+
+<script>
+
+// ========================================
+// 回答送信
+// ========================================
+
+function submitAnswers() {
+
+    const questions =
+        document.querySelectorAll(
+            ".question"
+        );
+
+
+    const answers = [];
+
+
+    questions.forEach(question => {
+
+        const image =
+            question.dataset.image;
+
+
+        const inputs =
+            question.querySelectorAll(
+                ".impression"
+            );
+
+
+        answers.push({
+
+            image: image,
+
+            impression1:
+                inputs[0].value,
+
+            impression2:
+                inputs[1].value,
+
+            impression3:
+                inputs[2].value
+
+        });
+
+    });
+
+
+    console.log(answers);
+
+
+    alert(
+        "回答データを取得しました。\n\n" +
+        "次の段階でGoogleスプレッドシートに送信します。"
+    );
+
+}
+
+</script>
+
 </body>
+
 </html>
